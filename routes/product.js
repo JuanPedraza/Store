@@ -23,7 +23,7 @@ router.post('/save', (req, res, next) => {
 router.put('/save/:id', (req, res, next) => {
 
   models.Product.findOne({
-    where: {id: req.params.id}
+    where: { id: req.params.id }
   }).then(product => {
     product.nombre = req.query.nombre;
     product.description = req.query.descripcion;
@@ -35,9 +35,7 @@ router.put('/save/:id', (req, res, next) => {
 
   });
 
- 
+
 });
-
-
 
 module.exports = router;
