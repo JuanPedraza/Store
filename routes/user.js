@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var object = require('../modules/objectsAndTypes');
-/*Producto GET*/
+
+
+/*User GET*/
 
 router.get('/:id', (req, res, next) => {
-  object.get('Product', req.params.id, 1)
+  object.get('User', req.params.id, 1)
     .then(response => {
       res.json({ status: true, content: response });
     })
@@ -13,13 +15,17 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-/* Producto - Post */
+/* User - Register */
 router.post('/save', (req, res, next) => {
   object.save([
-    'nombre',
-    'description',
-    'category'
-  ], req.query, 'Product')
+    'email',
+    'password',
+    'firstName',
+    'lastName',
+    'birthday',
+    'Datos'
+
+  ], req.query, 'User')
     .then(response => {
       res.json({ status: true, content: response });
     })
@@ -29,17 +35,20 @@ router.post('/save', (req, res, next) => {
 });
 
 
-/* Producto - PUT */
+/* User - Update */
 
 
 router.put('/save/:id', (req, res, next) => {
   let values = req.query;
   values.id = req.params.id;
   object.update([
-    'nombre',
-    'description',
-    'category'
-  ], values, 'Product')
+    'email',
+    'password',
+    'firstName',
+    'lastName',
+    'birthday',
+    'Datos'
+  ], values, 'User')
     .then(response => {
       res.json({ status: true, content: response });
     })
@@ -48,9 +57,9 @@ router.put('/save/:id', (req, res, next) => {
     });
 });
 
-/* Producto Delete */
+/* User Delete */
 router.delete('/delete/:id', (req, res, next) => {
-  object.delete('Product', req.params.id)
+  object.delete('User', req.params.id)
     .then(response => {
       res.json({ status: true, content: response });
     })
