@@ -39,14 +39,14 @@ router.put('/save/:id', (req, res, next) => {
     'nombre',
     'description',
     'category'
-  ], values, 'Product')
-    .then(response => {
+  ], values, 'Product')  
+  .then(response => {
       res.json({ status: true, content: response });
     })
     .catch(response => {
       res.json({ status: false, content: response });
     });
-});
+}); 
 
 /* Producto Delete */
 router.delete('/delete/:id', (req, res, next) => {
